@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# jupyter notebook
+.ipynb_checkpoints
+
+# venv/
+loan_venv/
+
 # C extensions
 *.so
 
