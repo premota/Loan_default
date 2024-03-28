@@ -1,27 +1,26 @@
 from src.components.data_ingestion import DataIngestionComponent
-from src.utils.helper import read_yaml
-from src.config.entity_config import DataIngestionConfig
-from src.constants import CONFIG_FILE_PATH
 from src.utils.exception import CustomException
+from src.config.config_manager import ConfigurationManager
 
 import sys
 
 class DataIngestionPipeline:
-    def __init__(self, CONFIG_FILE_PATH):
-        self.config = read_yaml(CONFIG_FILE_PATH)
+    def __init__(self):
+        pass
 
     def main(self):
         try:
-            config_obj = DataIngestionConfig(self.config)
-            ingest_obj = DataIngestionComponent(config_obj)
-            ingest_obj.extract_data() 
+            config_obj = ConfigurationManager()
+            ingestion_config = config_obj.get_data_ingestion_config()
+            component = DataIngestionComponent(config=ingestion_config)
+            component.extract_data()
         except Exception as e:
             raise CustomException(e,sys)
 
 
 if __name__ == "__main__":
     try:
-        obj = DataIngestionPipeline(CONFIG_FILE_PATH=CONFIG_FILE_PATH)
+        obj = DataIngestionPipeline()
         obj.main()
 
     except Exception as e:
