@@ -16,7 +16,7 @@ class DataValidationPipeline:
     def main(self):
         logging.info("Data validation about to begin")
         config = ConfigurationManager()
-        validation_config = config.get_data_validation()
+        validation_config = config.get_data_validation_config()
 
         validation_component = DataValidationComponent(validation_config)
         validation_component.validate_data()

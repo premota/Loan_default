@@ -11,3 +11,8 @@ data_validation:
   local_data_file: artifacts/data_ingestion/clean_data.csv
   STATUS_FILE: artifacts/data_validation/status.txt
 
+data_transformation:
+  pickle_dir : artifacts/data_transformation
+  pickle_file : artifacts/data_transformation/transformer_v1.pkl
+  local_data_file: artifacts/data_ingestion/clean_data.csv
+  final_file: artifacts/data_transformation/transformed_data.csv

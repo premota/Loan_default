@@ -17,3 +17,12 @@ class DataValidationConfig:
     local_data_file : Path
     data_schema : dict
 
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    pickle_dir : Path
+    pickle_file : Path
+    local_data_file: Path
+    ordinal_map : dict
+    Target : str
+    final_file: Path

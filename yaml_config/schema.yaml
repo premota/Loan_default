@@ -22,6 +22,7 @@ COLUMNS:
   Total Collection Amount      :     int64
   Total Current Balance        :     int64
   Total Revolving Credit Limit :     int64
+  Loan Status          :  int64       
   Grade                :  object
   Sub Grade            : object
   Home_Ownership       :  object

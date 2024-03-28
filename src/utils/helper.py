@@ -2,6 +2,7 @@ from pathlib import Path
 from box import Box
 from typing import List
 import os
+import pickle
 
 import yaml
 import sys
@@ -27,6 +28,16 @@ def create_folder(folder_path: List, verbose =True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logging.info(f"created a directory at {path}")
+
+
+def save_to_pickle(obj_path, obj):
+    try:
+        dir_path = os.path.dirname(obj_path)
+        os.makedirs(dir_path, exist_ok =True )
+        with open(obj_path, 'wb') as file:
+            pickle.dump(obj, file)
+    except Exception as e:
+        raise CustomException(e,sys)
 
 ######### testing script
 

@@ -14,7 +14,7 @@ class DataValidationComponent:
 
     def validate_data(self) -> bool:
         try:
-            validation_status = None
+            validation_status = True
 
             data = pd.read_csv(self.config.local_data_file)
             logging.info("reading columns of origin data")
@@ -31,10 +31,10 @@ class DataValidationComponent:
                         status_file.write(f" VALIDATION STATUS: {validation_status}")
 
                 else:
-                    validation_status = True
-                    with open(self.config.status_file, 'w') as status_file:
-                        status_file.write(f" VALIDATION STATUS: {validation_status}")
-            
+                    pass
+            with open(self.config.status_file, 'w') as status_file:
+                status_file.write(f" VALIDATION STATUS: {validation_status}")
+        
             logging.info("data validation completed")
             return validation_status
         
