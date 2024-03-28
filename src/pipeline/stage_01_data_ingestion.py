@@ -4,6 +4,8 @@ from src.config.config_manager import ConfigurationManager
 
 import sys
 
+PHASE_NAME = "Data Ingestion phase"
+
 class DataIngestionPipeline:
     def __init__(self):
         pass

@@ -17,8 +17,6 @@ class DataIngestionComponent:
             prefix = "https://drive.google.com/uc?/export=download&id="
             url = self.config.source_url
             data_path = self.config.local_data_file
-            data_root_dir = self.config.root_dir
-            os.makedirs(data_root_dir, exist_ok= True)
 
             file_id = url.split("/")[-2]
             logging.info(f"Downloading data from {url}") 

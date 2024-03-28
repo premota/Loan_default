@@ -1,11 +1,15 @@
 from pathlib import Path
 from box import Box
+from typing import List
+import os
 
 import yaml
 import sys
 
 from src.utils.logger import logging
 from src.utils.exception import CustomException
+
+
 
 
 def read_yaml(path: Path) -> Box:
@@ -17,6 +21,12 @@ def read_yaml(path: Path) -> Box:
     except Exception as e:
         raise CustomException(e,sys)
     
+
+def create_folder(folder_path: List, verbose =True):
+    for path in folder_path:
+        os.makedirs(path, exist_ok=True)
+        if verbose:
+            logging.info(f"created a directory at {path}")
 
 ######### testing script
 

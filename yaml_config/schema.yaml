@@ -1,34 +1,34 @@
 COLUMNS:
-Loan Amount:                       int64
-Funded Amount :                    int64
-Funded Amount Investor    :      float64
-Term                      :       int64
-Interest Rate             :      float64
-Employment_Duration       :      float64
-Debit to Income           :     float64
-Delinquency - two years   :      int64
-Inquires - six months     :     int64
-Open Account              :    int64
-Public Record             :   int64
-Revolving Balance         :        int64
-Revolving Utilities       :      float64
-Total Accounts            :        int64
-Total Received Interest   :      float64
-Total Received Late Fee   :      float64
-Recoveries                :      float64
-Collection Recovery Fee   :      float64
-Collection 12 months Medical :     int64
-Last week Pay                :     int64
-Total Collection Amount      :     int64
-Total Current Balance        :     int64
-Total Revolving Credit Limit :     int64
-Grade                :  object
-Sub Grade            : object
-Home_Ownership       :  object
-Verification Status  :  object
-Loan Title           :  object
-Initial List Status  :  object
-Application Type     :  object
+  Loan Amount:                       int64
+  Funded Amount :                    int64
+  Funded Amount Investor    :      float64
+  Term                      :       int64
+  Interest Rate             :      float64
+  Employment_Duration       :      float64
+  Debit to Income           :     float64
+  Delinquency - two years   :      int64
+  Inquires - six months     :     int64
+  Open Account              :    int64
+  Public Record             :   int64
+  Revolving Balance         :        int64
+  Revolving Utilities       :      float64
+  Total Accounts            :        int64
+  Total Received Interest   :      float64
+  Total Received Late Fee   :      float64
+  Recoveries                :      float64
+  Collection Recovery Fee   :      float64
+  Collection 12 months Medical :     int64
+  Last week Pay                :     int64
+  Total Collection Amount      :     int64
+  Total Current Balance        :     int64
+  Total Revolving Credit Limit :     int64
+  Grade                :  object
+  Sub Grade            : object
+  Home_Ownership       :  object
+  Verification Status  :  object
+  Loan Title           :  object
+  Initial List Status  :  object
+  Application Type     :  object
 
 TARGET_COLUMNS:
   name: Loan Status  
