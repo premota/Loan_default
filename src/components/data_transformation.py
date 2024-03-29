@@ -7,6 +7,7 @@ import sys
 
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
 import pandas as pd
 
 
@@ -20,7 +21,7 @@ class DataTransformationComponent:
     def transform_data(self):
         try:
             data_frame = pd.read_csv(self.config.local_data_file)
-            data = data_frame.drop([self.target.name], axis =1)
+            data = data_frame.drop([self.target], axis =1)
 
             logging.info("Transforming oridinal categorical features")
             # Replace your ordinal categorical feature with encoded values using the custom mapping
@@ -28,7 +29,7 @@ class DataTransformationComponent:
             data['Sub Grade'] = data['Sub Grade'].map(self.ordinal_map.subgrade_map)
             data['Verification Status'] = data['Verification Status'].map(self.ordinal_map.verification_status_map)
 
-            logging.info("FIninsed encoding ordinal features")
+            logging.info("Finised encoding ordinal features")
 
 
             numerical_features = data.select_dtypes(exclude = "object").columns.to_list()
@@ -63,12 +64,16 @@ class DataTransformationComponent:
             
             
             # attach target feature
-            transformed_data[self.target.name] = data_frame[self.target.name]
+            transformed_data[self.target] = data_frame[self.target]
             logging.info(f"transformated dataset has dimension of {transformed_data.shape}")
 
-            transformed_data.to_csv(self.config.final_file, index = False)
+            #perform train-test split
+            train_df, test_df = train_test_split(transformed_data, test_size= 0.3, stratify= transformed_data[self.target])
+            train_df.to_csv(self.config.train_data, index = False)
+            test_df.to_csv(self.config.test_data, index = False)
 
-            logging.info(f"Transformed Data is saved at {self.config.pickle_dir}")
+            logging.info(f"train data size is: {train_df.shape}, test data size is: {test_df.shape}")
+            logging.info(f"Train and test data is saved at {self.config.local_root_dir}")
 
         except Exception as e:
             raise CustomException(e,sys)

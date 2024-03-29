@@ -1,5 +1,5 @@
 from src.config.entity_config import (DataIngestionConfig, DataValidationConfig,
-                                       DataTransformationConfig)
+                                       DataTransformationConfig, ModelTrainerConfig)
 from src.constants import *
 from src.utils.helper import read_yaml, create_folder
 
@@ -49,16 +49,34 @@ class ConfigurationManager:
     def get_data_transformation_config(self) -> DataTransformationConfig:
         config = self.config.data_transformation
         ordinal_map = self.ordinal_map
-        target_variable = self.schema.TARGET_COLUMNS
+        target_variable = self.schema.TARGET_COLUMNS.name
 
-        create_folder([config.pickle_dir])
+        create_folder([config.local_root_dir])
 
         data_transformation_config = DataTransformationConfig(
-                                    pickle_dir= config.pickle_dir,
+                                    local_root_dir= config.local_root_dir,
                                     pickle_file= config.pickle_file,
                                     local_data_file= config.local_data_file,
                                     ordinal_map= ordinal_map,
                                     Target= target_variable,
-                                    final_file= config.final_file)
+                                    train_data = config.train_data,
+                                    test_data= config.test_data)
         
         return data_transformation_config
+    
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        params = self.params.XGBoost
+        config = self.config.model_trainer
+        target_variable = self.schema.TARGET_COLUMNS.name
+
+        create_folder([config.local_root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+                                    local_root_dir =  config.local_root_dir,
+                                    train_data = config.train_data,
+                                    model_pickle_file =  config.model_pickle_file,
+                                    params=params,
+                                    Target= target_variable)
+        
+        return model_trainer_config

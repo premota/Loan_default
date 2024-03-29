@@ -1,5 +1,4 @@
 from pathlib import Path
-from box import Box
 from dataclasses import dataclass
 
 
@@ -20,9 +19,18 @@ class DataValidationConfig:
 
 @dataclass(frozen=True)
 class DataTransformationConfig:
-    pickle_dir : Path
+    local_root_dir : Path
     pickle_file : Path
     local_data_file: Path
     ordinal_map : dict
     Target : str
-    final_file: Path
+    train_data: Path
+    test_data: Path
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    local_root_dir: Path
+    train_data: Path
+    model_pickle_file: Path
+    params: dict
+    Target: str

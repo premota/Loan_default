@@ -12,7 +12,14 @@ data_validation:
   STATUS_FILE: artifacts/data_validation/status.txt
 
 data_transformation:
-  pickle_dir : artifacts/data_transformation
+  local_root_dir : artifacts/data_transformation
   pickle_file : artifacts/data_transformation/transformer_v1.pkl
   local_data_file: artifacts/data_ingestion/clean_data.csv
-  final_file: artifacts/data_transformation/transformed_data.csv
+  train_data: artifacts/data_transformation/train_data.csv
+  test_data: artifacts/data_transformation/test_data.csv
+
+model_trainer:
+  local_root_dir: artifacts/model_trainer
+  train_data: artifacts/data_transformation/train_data.csv
+  model_pickle_file: artifacts/model_trainer/model_v1.pkl
+
