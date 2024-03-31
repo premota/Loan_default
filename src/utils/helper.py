@@ -3,6 +3,7 @@ from box import Box
 from typing import List
 import os
 import pickle
+import json
 
 import yaml
 import sys
@@ -30,7 +31,7 @@ def create_folder(folder_path: List, verbose =True):
             logging.info(f"created a directory at {path}")
 
 
-def save_to_pickle(obj_path, obj):
+def save_to_pickle(obj_path: Path, obj):
     try:
         dir_path = os.path.dirname(obj_path)
         os.makedirs(dir_path, exist_ok =True )
@@ -38,6 +39,22 @@ def save_to_pickle(obj_path, obj):
             pickle.dump(obj, file)
     except Exception as e:
         raise CustomException(e,sys)
+    
+def load_object(file_path: Path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
+    except Exception as e:
+        raise CustomException(e,sys)
+
+
+def save_json(path: Path, data: dict):
+    
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+
+
+
 
 ######### testing script
 

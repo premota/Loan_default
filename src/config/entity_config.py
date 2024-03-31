@@ -34,3 +34,13 @@ class ModelTrainerConfig:
     model_pickle_file: Path
     params: dict
     Target: str
+
+@dataclass(frozen =True)
+class ModelEvaluationConfig:
+    local_root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    metric_file_name: Path
+    params : dict
+    Target : str
+    

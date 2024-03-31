@@ -18,7 +18,7 @@ class DataTransformationComponent:
         self.ordinal_map = self.config.ordinal_map
         self.target = self.config.Target
 
-    def transform_data(self):
+    def transform_data(self, target = True):
         try:
             data_frame = pd.read_csv(self.config.local_data_file)
             data = data_frame.drop([self.target], axis =1)

@@ -1,5 +1,5 @@
 from src.config.entity_config import (DataIngestionConfig, DataValidationConfig,
-                                       DataTransformationConfig, ModelTrainerConfig)
+                                       DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig)
 from src.constants import *
 from src.utils.helper import read_yaml, create_folder
 
@@ -80,3 +80,21 @@ class ConfigurationManager:
                                     Target= target_variable)
         
         return model_trainer_config
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        params = self.params.XGBoost
+        config = self.config.model_evaluation
+        target_variable = self.schema.TARGET_COLUMNS.name
+
+        create_folder([config.local_root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+                                    local_root_dir= config.local_root_dir,
+                                    test_data_path= config.test_data_path,
+                                    model_path =  config.model_path,
+                                    metric_file_name=config.metric_file_name,
+                                    params = params,
+                                    Target = target_variable,
+                                    )
+        
+        return model_evaluation_config

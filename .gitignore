@@ -12,6 +12,9 @@ aritifacts/
 # venv/
 loan_venv/
 
+# Mlflow
+mlruns
+
 # C extensions
 *.so
 
