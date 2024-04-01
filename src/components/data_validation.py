@@ -26,12 +26,9 @@ class DataValidationComponent:
             for data_col in all_data_columns:
                 if data_col not in all_schema_columns:
                     validation_status = False
-
-                    with open(self.config.status_file, 'w') as status_file:
-                        status_file.write(f" VALIDATION STATUS: {validation_status}")
-
                 else:
                     pass
+                
             with open(self.config.status_file, 'w') as status_file:
                 status_file.write(f" VALIDATION STATUS: {validation_status}")
         
