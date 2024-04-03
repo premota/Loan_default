@@ -44,3 +44,8 @@ class ModelEvaluationConfig:
     params : dict
     Target : str
     
+@dataclass(frozen=True)
+class PredictionConfig:
+    transfomer_path: Path
+    model_path: Path
+    ordinal_map : dict

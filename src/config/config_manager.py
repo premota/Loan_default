@@ -1,5 +1,6 @@
 from src.config.entity_config import (DataIngestionConfig, DataValidationConfig,
-                                       DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig)
+                                       DataTransformationConfig, ModelTrainerConfig,
+                                        ModelEvaluationConfig, PredictionConfig)
 from src.constants import *
 from src.utils.helper import read_yaml, create_folder
 
@@ -98,3 +99,14 @@ class ConfigurationManager:
                                     )
         
         return model_evaluation_config
+    
+    def get_prediction_config(self) -> PredictionConfig:
+        ordinal_map = self.ordinal_map
+        config = self.config.prediction
+
+        prediction_config = PredictionConfig(
+                                    model_path= config.model_path,
+                                    transfomer_path= config.transfomer_path,
+                                    ordinal_map= ordinal_map)
+        
+        return prediction_config
