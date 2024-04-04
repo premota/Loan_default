@@ -7,7 +7,7 @@ __pycache__/
 .ipynb_checkpoints
 
 # data aritifacts
-aritifacts/
+artifacts
 
 # venv/
 loan_venv/
