@@ -10,10 +10,27 @@ import sys
 
 
 class ModelTrainerComponent:
+    """
+    A class to train machine learning models.
+
+    Attributes:
+    config (ModelTrainerConfig): Configuration object containing training parameters.
+
+    Methods:
+    train_model: Trains a machine learning model using the provided training data.
+    """
+
     def __init__(self, config: ModelTrainerConfig):
         self.config = config
 
     def train_model(self):
+        """
+        Trains a machine learning model using the provided training data.
+
+        Raises:
+        CustomException: If an error occurs during model training.
+        """
+        
         try:
             train_data = pd.read_csv(self.config.train_data)
 

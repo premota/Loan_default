@@ -6,6 +6,24 @@ from src.utils.helper import read_yaml, create_folder
 
 
 class ConfigurationManager:
+    """
+    A class to manage configurations for data ingestion, validation, transformation, model training, model evaluation, and prediction.
+
+    Attributes:
+    config_file_path (str): Path to the main configuration file.
+    params_file_path (str): Path to the parameters configuration file.
+    schema_file_path (str): Path to the schema configuration file.
+    ordinal_map_file_path (str): Path to the ordinal mapping configuration file.
+
+    Methods:
+    get_data_ingestion_config: Retrieves the data ingestion configuration.
+    get_data_validation_config: Retrieves the data validation configuration.
+    get_data_transformation_config: Retrieves the data transformation configuration.
+    get_model_trainer_config: Retrieves the model trainer configuration.
+    get_model_evaluation_config: Retrieves the model evaluation configuration.
+    get_prediction_config: Retrieves the prediction configuration.
+    """
+
     def __init__(self,
                  config_file_path = CONFIG_FILE_PATH,
                  params_file_path = PARAMS_FILE_PATH,

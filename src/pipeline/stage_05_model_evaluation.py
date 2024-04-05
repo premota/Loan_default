@@ -4,6 +4,13 @@ from src.config.config_manager import ConfigurationManager
 
 
 class ModelEvaluationPipeline:
+    """
+    A class to execute a model evaluation pipeline.
+
+    Methods:
+    main: Executes the model evaluation pipeline.
+    """
+    
     def __init__(self):
         pass
 

@@ -15,11 +15,28 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 
 class ModelEvaluationComponent:
+    """
+    A class to evaluate machine learning models.
+
+    Attributes:
+    config (ModelEvaluationConfig): Configuration object containing evaluation parameters.
+
+    Methods:
+    evaluate_model: Evaluates a machine learning model using test data and saves evaluation metrics.
+    """
+
     def __init__(self,config: ModelEvaluationConfig):
         self.config = config
 
 
     def evaluate_model(self):
+        """
+        Evaluates a machine learning model using test data and saves evaluation metrics.
+
+        Raises:
+        CustomException: If an error occurs during model evaluation.
+        """
+        
         try:
             logging.info("reading test data and saved model")
             test_data = pd.read_csv(self.config.test_data_path)

@@ -9,10 +9,31 @@ import pandas as pd
 
 
 class DataValidationComponent:
+    """
+    A class to perform data validation tasks.
+
+    Attributes:
+    config (DataValidationConfig): Configuration object containing validation parameters.
+
+    Methods:
+    validate_data: Validates data against a predefined schema and writes the validation status to a file.
+    """
+
     def __init__(self, config: DataValidationConfig):
         self.config = config
 
+
     def validate_data(self) -> bool:
+        """
+        Validates data against a predefined schema and writes the validation status to a file.
+
+        Returns:
+        bool: True if data validation succeeds, False otherwise.
+
+        Raises:
+        CustomException: If an error occurs during data validation.
+        """
+
         try:
             validation_status = True
 

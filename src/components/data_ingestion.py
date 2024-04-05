@@ -9,10 +9,24 @@ from src.utils.exception import CustomException
 
 
 class DataIngestionComponent:
+    """
+    A class to handle data ingestion tasks.
+
+    Attributes:
+    config (DataIngestionConfig): Configuration object containing data ingestion parameters.
+
+    Methods:
+    extract_data: Downloads data from a specified URL and saves it locally.
+    """
+
     def __init__(self, config: DataIngestionConfig):
-         self.config = config
+        self.config = config
     
     def extract_data(self):
+        """
+        Downloads data from a specified URL and saves it locally.
+        """
+
         try:
             prefix = "https://drive.google.com/uc?/export=download&id="
             url = self.config.source_url

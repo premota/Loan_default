@@ -13,12 +13,28 @@ import pandas as pd
 
 
 class DataTransformationComponent:
+    """
+    A class to perform data transformation tasks.
+
+    Attributes:
+    config (DataTransformationConfig): Configuration object containing transformation parameters.
+    ordinal_map (dict): Mapping of ordinal categorical features to numerical values.
+    target (str): Name of the target variable.
+
+    Methods:
+    transform_data: Reads data, performs feature transformation, and saves the transformed data.
+    """
+
     def __init__(self, config: DataTransformationConfig):
         self.config = config
         self.ordinal_map = self.config.ordinal_map
         self.target = self.config.Target
 
-    def transform_data(self, target = True):
+    def transform_data(self):
+        """
+        Reads data, performs feature transformation, and saves the transformed data.
+        """
+
         try:
             data_frame = pd.read_csv(self.config.local_data_file)
             data = data_frame.drop([self.target], axis =1)

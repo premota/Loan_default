@@ -4,6 +4,15 @@ from src.config.config_manager import ConfigurationManager
 import pandas as pd
 
 class PredictionPipeline:
+    """
+    A class to execute a prediction pipeline.
+
+    Attributes:
+    data (pd.DataFrame): Input data for prediction.
+
+    Methods:
+    predict: Executes the prediction pipeline and returns the predictions.
+    """
     def __init__(self, data: pd.DataFrame):
         self.data = data
 

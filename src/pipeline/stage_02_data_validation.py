@@ -10,6 +10,14 @@ import sys
 PHASE_NAME = "Data validation phase"
 
 class DataValidationPipeline:
+    """
+    A class to execute a data validation pipeline.
+
+    Methods:
+    main: Executes the data validation pipeline.
+    """
+
+    
     def __init__(self):
         pass
 
@@ -20,6 +28,9 @@ class DataValidationPipeline:
 
         validation_component = DataValidationComponent(validation_config)
         validation_component.validate_data()
+
+
+
 
 
 if __name__ == "__main__":
